@@ -1,0 +1,12 @@
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/bin/Debug/net8.0/EliteRobots.CSharp.deps.json
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/bin/Debug/net8.0/EliteRobots.CSharp.dll
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/bin/Debug/net8.0/EliteRobots.CSharp.pdb
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.GeneratedMSBuildEditorConfig.editorconfig
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.AssemblyInfoInputs.cache
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.AssemblyInfo.cs
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.csproj.CoreCompileInputs.cache
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.sourcelink.json
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.dll
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/refint/EliteRobots.CSharp.dll
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/EliteRobots.CSharp.pdb
+/home/dukang/Elite_Robots_CS_SDK/dotnet/EliteRobots.CSharp/obj/Debug/net8.0/ref/EliteRobots.CSharp.dll

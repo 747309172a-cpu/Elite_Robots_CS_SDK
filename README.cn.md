@@ -25,6 +25,13 @@ sudo apt install elite-cs-series-sdk
 ## API 说明
 [API](./doc/API/cn/API.cn.md)
 
+## C# 封装骨架
+仓库已提供最小可用的 C ABI + C# 封装骨架，路径见 [`dotnet/`](./dotnet/README.md)。
+通过以下 CMake 选项启用原生 C 包装层编译：
+```bash
+cmake -S . -B build -DELITE_COMPILE_C_WRAPPER=ON
+```
+
 ## Architecture
 [代码架构](./doc/Architecture/Arch.cn.md)
 

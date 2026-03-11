@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../EliteRobots.CSharp/EliteRobots.CSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)../../build/wrapper/c/libelite_cs_series_sdk_c.so')">
+    <Content Include="$(MSBuildThisFileDirectory)../../build/wrapper/c/libelite_cs_series_sdk_c.so">
+      <Link>libelite_cs_series_sdk_c.so</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)../../build/libelite-cs-series-sdk.so')">
+    <Content Include="$(MSBuildThisFileDirectory)../../build/libelite-cs-series-sdk.so">
+      <Link>libelite-cs-series-sdk.so</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

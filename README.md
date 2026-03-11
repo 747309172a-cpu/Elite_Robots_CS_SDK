@@ -29,6 +29,13 @@ If compilation and installation are required, please refer to the [Compilation G
 ## API document
 [API](./doc/API/en/API.en.md)
 
+## C# Wrapper Skeleton
+A minimal C ABI + C# wrapper skeleton is available under [`dotnet/`](./dotnet/README.md).
+Enable native C wrapper build with CMake option:
+```bash
+cmake -S . -B build -DELITE_COMPILE_C_WRAPPER=ON
+```
+
 ## Compatible Operating Systems
 Tested on the following system platforms:
 
