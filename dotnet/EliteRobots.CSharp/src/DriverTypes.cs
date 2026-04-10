@@ -36,7 +36,7 @@ public enum ForceMode
     TCP = 3,
 }
 
-public sealed class EliteSerialConfig
+public sealed class SerialConfig
 {
     public SerialConfigBaudRate baud_rate { get; set; } = SerialConfigBaudRate.BR_115200;
     public SerialConfigParity parity { get; set; } = SerialConfigParity.NONE;

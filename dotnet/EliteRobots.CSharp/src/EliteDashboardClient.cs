@@ -3,11 +3,11 @@ using System.Text;
 
 namespace EliteRobots.CSharp;
 
-public sealed class EliteDashboardClient : IDisposable
+public sealed class DashboardClientInterface : IDisposable
 {
     private readonly EliteDashboardSafeHandle _handle;
 
-    public EliteDashboardClient()
+    public DashboardClientInterface()
     {
         var status = NativeMethods.elite_dashboard_create(out var rawHandle);
         ThrowIfError(status, rawHandle);

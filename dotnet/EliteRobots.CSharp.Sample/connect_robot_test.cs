@@ -36,7 +36,7 @@ internal static class ConnectRobotTestExample
         using var tcpServer = new TcpServer(serverPort);
         LogInfo($"TCP Server is started on port {serverPort}");
 
-        using var primary = new ElitePrimaryClient();
+        using var primary = new PrimaryClientInterface();
         if (!primary.connect(ip))
         {
             LogError($"Failed to connect to primary server at {ip}:30001");

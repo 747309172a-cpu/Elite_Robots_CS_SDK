@@ -46,7 +46,7 @@ internal static class DriverExample
             HeadlessMode = headless,
         };
 
-        using var driver = new EliteDriverClient(config);
+        using var driver = new EliteDriver(config);
         Console.WriteLine($"headlessMode: {headless}");
 
         RunStep("isRobotConnected", driver.isRobotConnected);
@@ -97,7 +97,7 @@ internal static class DriverExample
 
         if (withRs485)
         {
-            var serialConfig = new EliteSerialConfig
+            var serialConfig = new SerialConfig
             {
                 baud_rate = SerialConfigBaudRate.BR_115200,
                 parity = SerialConfigParity.NONE,

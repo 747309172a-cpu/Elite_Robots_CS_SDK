@@ -10,8 +10,8 @@
     <ProjectReference Include="../EliteRobots.CSharp/EliteRobots.CSharp.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)../../build/wrapper/c/libelite_cs_series_sdk_c.so')">
-    <Content Include="$(MSBuildThisFileDirectory)../../build/wrapper/c/libelite_cs_series_sdk_c.so">
+  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)../../build/wrapper/libelite_cs_series_sdk_c.so')">
+    <Content Include="$(MSBuildThisFileDirectory)../../build/wrapper/libelite_cs_series_sdk_c.so">
       <Link>libelite_cs_series_sdk_c.so</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -10,7 +10,7 @@ internal static class RtsiClientFlowExample
             return;
         }
 
-        using var client = new EliteRtsiClient();
+        using var client = new RtsiClientInterface();
 
         Console.WriteLine($"[INFO] Connecting to RTSI at {ip}:{port}...");
         client.connect(ip, port);

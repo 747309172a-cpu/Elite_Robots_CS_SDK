@@ -35,7 +35,7 @@ internal static partial class NativeMethods
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct EliteSerialConfigNative
+    internal struct SerialConfigNative
     {
         public int baud_rate;
         public int parity;
@@ -203,7 +203,7 @@ internal static partial class NativeMethods
     [DllImport(NativeLib, CallingConvention = CallingConvention.Cdecl)]
     internal static extern EliteStatus elite_driver_start_tool_rs485(
         nint handle,
-        ref EliteSerialConfigNative config,
+        ref SerialConfigNative config,
         [MarshalAs(UnmanagedType.LPUTF8Str)] string sshPassword,
         int tcpPort,
         out nint outComm);
@@ -218,7 +218,7 @@ internal static partial class NativeMethods
     [DllImport(NativeLib, CallingConvention = CallingConvention.Cdecl)]
     internal static extern EliteStatus elite_driver_start_board_rs485(
         nint handle,
-        ref EliteSerialConfigNative config,
+        ref SerialConfigNative config,
         [MarshalAs(UnmanagedType.LPUTF8Str)] string sshPassword,
         int tcpPort,
         out nint outComm);
@@ -704,14 +704,14 @@ internal sealed class ElitePrimarySafeHandle : SafeHandleZeroOrMinusOneIsInvalid
     }
 }
 
-internal sealed class EliteRtsiClientSafeHandle : SafeHandleZeroOrMinusOneIsInvalid
+internal sealed class RtsiClientInterfaceSafeHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
-    internal EliteRtsiClientSafeHandle()
+    internal RtsiClientInterfaceSafeHandle()
         : base(ownsHandle: true)
     {
     }
 
-    internal EliteRtsiClientSafeHandle(nint preexistingHandle)
+    internal RtsiClientInterfaceSafeHandle(nint preexistingHandle)
         : base(ownsHandle: true)
     {
         SetHandle(preexistingHandle);

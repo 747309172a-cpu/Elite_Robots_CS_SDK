@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EliteRobots.CSharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38ab87df603c8a0c076ebc9a9ec2fe819fdcada0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6e919d59dbaf6433d7bd6eb085e015c6e194aa5")]
 [assembly: System.Reflection.AssemblyProductAttribute("EliteRobots.CSharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EliteRobots.CSharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

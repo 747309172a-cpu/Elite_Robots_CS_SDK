@@ -10,7 +10,7 @@ internal static class PrimaryClientFlowExample
             return;
         }
 
-        using var pr = new ElitePrimaryClient();
+        using var pr = new PrimaryClientInterface();
 
         if (pr.connect(ip, port))
         {

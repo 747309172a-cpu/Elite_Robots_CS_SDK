@@ -21,7 +21,7 @@ internal static class DashboardClientFlowExample
             }
         }
 
-        using var dashboard = new EliteDashboardClient();
+        using var dashboard = new DashboardClientInterface();
 
         Console.WriteLine($"[INFO] Connecting to dashboard at {ip}:{port}...");
         var connected = dashboard.connect(ip, port);
