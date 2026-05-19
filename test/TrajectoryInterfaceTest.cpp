@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <boost/asio.hpp>
+#include <cmath>
 #include <memory>
 #include <thread>
 
@@ -55,6 +56,20 @@ public:
     
 };
 
+static void send_feedback_frame(TcpClient& client, int32_t version, int32_t message_type, int32_t point_index, int32_t total_points,
+                                int32_t result, const vector6d_t& point) {
+    int32_t frame[TrajectoryInterface::TRAJECTORY_FEEDBACK_LEN] = {0};
+    frame[0] = htonl(version);
+    frame[1] = htonl(message_type);
+    frame[2] = htonl(point_index);
+    frame[3] = htonl(total_points);
+    frame[4] = htonl(result);
+    for (size_t i = 0; i < point.size(); ++i) {
+        frame[5 + i] = htonl(static_cast<int32_t>(std::lround(point[i] * CONTROL::POS_ZOOM_RATIO)));
+    }
+    client.socket_ptr->send(boost::asio::buffer(frame, sizeof(frame)));
+}
+
 TEST(TRAJECTORY_INTERFACE, write_point) {
     auto tcp_resource = std::make_shared<TcpServer::StaticResource>();
     std::unique_ptr<TrajectoryInterface> trajectory_ins = std::make_unique<TrajectoryInterface>(TRAJECTORY_INTERFACE_TEST_PORT, tcp_resource);
@@ -64,10 +79,12 @@ TEST(TRAJECTORY_INTERFACE, write_point) {
 
     std::this_thread::sleep_for(50ms);
 
+    TrajectoryMotionFeedback feedback;
     TrajectoryMotionResult motion_result = TrajectoryMotionResult::FAILURE;
     trajectory_ins->setMotionResultCallback([&](TrajectoryMotionResult result) {
         motion_result = result;
     });
+    trajectory_ins->setMotionFeedbackCallback([&](const TrajectoryMotionFeedback& value) { feedback = value; });
 
     trajectory_ins->writeTrajectoryPoint({1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f}, 100, 1.230, true);
 
@@ -90,12 +107,23 @@ TEST(TRAJECTORY_INTERFACE, write_point) {
     // mode
     EXPECT_EQ(::htonl(buffer[20]), (int)TrajectoryMotionType::CARTESIAN);
 
-    int send_result = (int)TrajectoryMotionResult::SUCCESS;
-    client->socket_ptr->send(boost::asio::buffer(&send_result, sizeof(int)));
+    vector6d_t point{1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
+    send_feedback_frame(*client, 1, (int)TrajectoryFeedbackMessageType::ACTIVE_POINT, 0, 1, -1, point);
+    std::this_thread::sleep_for(50ms);
+    EXPECT_EQ(feedback.version, 1);
+    EXPECT_EQ(feedback.message_type, TrajectoryFeedbackMessageType::ACTIVE_POINT);
+    EXPECT_EQ(feedback.point_index, 0);
+    EXPECT_EQ(feedback.total_points, 1);
+    EXPECT_EQ(feedback.result, -1);
+    EXPECT_DOUBLE_EQ(feedback.point[0], 1.0);
+
+    send_feedback_frame(*client, 1, (int)TrajectoryFeedbackMessageType::RESULT, 1, 1, (int)TrajectoryMotionResult::SUCCESS, point);
 
     std::this_thread::sleep_for(50ms);
 
-    EXPECT_EQ(motion_result, (TrajectoryMotionResult)send_result);
+    EXPECT_EQ(motion_result, TrajectoryMotionResult::SUCCESS);
+    EXPECT_EQ(feedback.message_type, TrajectoryFeedbackMessageType::RESULT);
+    EXPECT_EQ(feedback.result, (int)TrajectoryMotionResult::SUCCESS);
 }
 
 TEST(TRAJECTORY_INTERFACE, disconnect) { 
